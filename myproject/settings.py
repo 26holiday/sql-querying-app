@@ -13,8 +13,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY', 'your-secret-key')
 # Set DEBUG from environment or default to False for production safety
 DEBUG = os.environ.get('DEBUG', 'False').lower() == 'true'
 
-# Get ALLOWED_HOSTS from environment or default to localhost
-ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS', 'localhost').split(',')
+ALLOWED_HOSTS = ['*']  # for development only
 
 # Application definition
 INSTALLED_APPS = [
@@ -58,16 +57,11 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'myproject.wsgi.application'
 
+# Updated Database configuration for production PostgreSQL database
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': os.environ.get('DATABASE_NAME', 'findb_test'),
-        'USER': os.environ.get('DATABASE_USER', 'postgres'),
-        'PASSWORD': os.environ.get('DATABASE_PASSWORD', '12345678'),
-        'HOST': os.environ.get('DATABASE_HOST', 'localhost'),
-        'PORT': os.environ.get('DATABASE_PORT', '5432'),
-    }
+    'default': dj_database_url.config(default=os.environ.get('DATABASE_URL'))
 }
+
 # Password validation
 AUTH_PASSWORD_VALIDATORS = []
 
