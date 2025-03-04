@@ -8,8 +8,8 @@ load_dotenv()
 
 # Build paths inside the project
 BASE_DIR = Path(__file__).resolve().parent.parent
-
-SECRET_KEY = 'your-secret-key'
+# Get SECRET_KEY from environment variables or use default
+SECRET_KEY = os.environ.get('SECRET_KEY', 'your-secret-key')
 DEBUG = True
 
 ALLOWED_HOSTS = ['*']  # for development only
