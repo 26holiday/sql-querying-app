@@ -13,7 +13,8 @@ SECRET_KEY = os.environ.get('SECRET_KEY', 'your-secret-key')
 # Set DEBUG from environment or default to False for production safety
 DEBUG = os.environ.get('DEBUG', 'False').lower() == 'true'
 
-ALLOWED_HOSTS = ['*']  # for development only
+# Get ALLOWED_HOSTS from environment or default to localhost
+ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS', 'localhost').split(',')
 
 # Application definition
 INSTALLED_APPS = [
