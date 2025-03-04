@@ -10,7 +10,8 @@ load_dotenv()
 BASE_DIR = Path(__file__).resolve().parent.parent
 # Get SECRET_KEY from environment variables or use default
 SECRET_KEY = os.environ.get('SECRET_KEY', 'your-secret-key')
-DEBUG = True
+# Set DEBUG from environment or default to False for production safety
+DEBUG = os.environ.get('DEBUG', 'False').lower() == 'true'
 
 ALLOWED_HOSTS = ['*']  # for development only
 
