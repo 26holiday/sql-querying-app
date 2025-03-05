@@ -91,12 +91,12 @@ class ProcessPromptView(APIView):
     )
     def post(self, request):
         # Check for user authentication via the userId header.
-        user_id = request.headers.get("userId")
-        if not user_id:
-            return Response(
-                {"error": "Unauthorized. Invalid or missing userId."},
-                status=status.HTTP_401_UNAUTHORIZED
-            )
+        # user_id = request.headers.get("userId")
+        # if not user_id:
+        #     return Response(
+        #         {"error": "Unauthorized. Invalid or missing userId."},
+        #         status=status.HTTP_401_UNAUTHORIZED
+        #     )
 
         serializer = QuerySerializer(data=request.data)
         if serializer.is_valid():
