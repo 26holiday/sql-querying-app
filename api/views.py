@@ -12,6 +12,9 @@ class ProcessPromptView(APIView):
     API endpoint that receives an SQL query and returns a response after executing
     the query on the production PostgreSQL database.
     """
+    
+    authentication_classes = []  # Disables all authentication for this view
+    
     @swagger_auto_schema(
         operation_id="processPrompt",
         operation_summary="Send an SQL query to the database and return a response.",
